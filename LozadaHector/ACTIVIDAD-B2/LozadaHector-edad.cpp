@@ -1,60 +1,68 @@
+//================================================
+
+
+//==> Nombre del programa: calcula la edad
+//==> Archivo : LozadaHector-edad.cpp
+//==>Autor: Héctor Escobar
+//==>Fecha de elaboración: 2022-01-10
+//==>Fecha última actualización: 2022-05- 15
+
+
+//=================================================
 #include <iostream>
 #include <cstdlib>
 #include <locale.h>
 using namespace std;
  
-void calcularEdad( int anioAct , int mesAct, int fechAct, int anioNac, int mesNac, int fechNac);
+void calcularEdad( int he_anioAct , int he_mesAct, int he_fechAct, int he_anioNac, int he_mesNac, int he_fechNac);
  
 int main ()
 {
 	setlocale(LC_ALL, "");
-    int anioAct; 
-    int mesAct; 
-    int fechAct; 
- 
-    int anioNac; 
-    int mesNac; 
-    int fechNac;
- 
- 	cout<<"\n\tEdad\n\n";
-    cout << "Ingrese Año Actual: ";   cin >> anioAct;
-    cout << "Ingrese Mes Actual: ";   cin >> mesAct;
-    cout << "Ingrese Fecha Actual: ";  cin >> fechAct;
- 
-    cout << "\nIngrese Año Nacimiento: ";  cin >> anioNac;
-    cout << "Ingrese Mes de Nacimiento: ";  cin >> mesNac;
-    cout << "Ingrese Fecha de Nacimiento: ";  cin >> fechNac;
- 
-    calcularEdad( anioAct , mesAct, fechAct, anioNac, mesNac, fechNac);
- 
-    return 0;
-}
- 
-
-void calcularEdad( int anioAct , int mesAct, int fechAct, int anioNac, int mesNac, int fechNac)
-{
-    int respFech , respMes;
- 
-    if ( fechAct < fechNac  )
-    {   
-        fechAct = fechAct + 30; 
-        mesAct = mesAct - 1;
-        respFech =  fechAct - fechNac;
-    }
-    else
-        respFech =  fechAct - fechNac;
- 
-    if( mesAct < mesNac )
-    {   
-        mesAct = mesAct + 12; 
-        anioAct = anioAct - 1 ; 
-        respMes = mesAct - mesNac; 
-    }
-    else 
-        respMes = mesAct - mesNac;
- 
-    cout << "\nUd. tiene:\n";
-    cout << " Edad: " <<anioAct - anioNac << endl;
-    cout << " Mes: " << respMes << endl;
-    cout << " Dia: " << respFech << endl;
+	int he_diaAct; 
+	int he_mesAct; 
+	int he_anoAct; 
+	int he_diaNac; 
+	int he_mesNac; 
+	int he_anoNac;			
+	int he_anoR, he_mesR, he_diaR;
+		
+	cout<<"\n\tEdad\n\n";
+	cout << "Ingrese Año Actual: ";   cin >> he_anoAct;
+	cout << "Ingrese Mes Actual: ";   cin >> he_mesAct;
+	cout << "Ingrese Dia Actual: ";  cin >> he_diaAct;
+	cout << "\nIngrese Año Nacimiento: ";  cin >> he_anoNac;
+	cout << "Ingrese Mes de Nacimiento: ";  cin >> he_mesNac;
+	cout << "Ingrese Dia de Nacimiento: ";  cin >> he_diaNac;			
+	if (he_anoAct > he_anoNac)
+	{
+		if(he_mesAct > he_mesNac)	 
+		{
+			he_anoR=he_anoAct-he_anoNac;	
+			he_mesR=he_mesAct-he_mesNac;					
+		}
+		else
+		{
+			he_anoR=he_anoAct-he_anoNac-1;	
+			he_mesR=(he_mesAct+12)-he_mesNac;					
+		}												
+		if(he_diaAct > he_diaNac)
+		{				
+			he_diaR=he_diaAct-he_diaNac;
+		}
+		else
+		{
+			he_mesR=he_mesR-1;
+			he_diaR=(he_diaAct+30)-he_diaNac;
+		}	
+		cout << "\nUd. tiene:\n";
+		cout << " Edad: " <<he_anoR<< endl;
+		cout << " Mes: " <<he_mesR << endl;
+		cout << " Dia: " << he_diaR << endl;								
+	}
+	else
+	{
+		cout << "\n Calculo no es posible ";
+	}
+	return 0;
 }
